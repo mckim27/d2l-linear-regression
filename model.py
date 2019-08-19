@@ -34,7 +34,7 @@ class LinearModel():
 
 
 class MxLinearModel:
-    def __init__(self):
+    def __init__(self, lr):
         self.net = nn.Sequential()
         self.net.add(nn.Dense(1))
 
@@ -48,7 +48,7 @@ class MxLinearModel:
             self.net.collect_params(),
             'sgd',
             {
-                'learning_rate': 0.03
+                'learning_rate': lr
             }
         )
 

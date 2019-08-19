@@ -50,7 +50,7 @@ def main():
         data_loader = MxDataLoader(TRUE_W, TRUE_B, num_inputs, num_examples, batch_size)
         features, labels = data_loader.get_data()
 
-        model = MxLinearModel()
+        model = MxLinearModel(lr)
 
         for epoch in range(num_epochs):
             for X, y in data_loader.data_iter:
