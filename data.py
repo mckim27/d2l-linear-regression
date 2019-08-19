@@ -3,6 +3,7 @@
 from mxnet import ndarray as nd
 from IPython import display
 from matplotlib import pyplot as plt
+from mxnet.gluon import data as gdata
 import random
 
 
@@ -42,3 +43,14 @@ class Dataloader:
         self.__set_figsize()
         plt.figure(figsize=(10, 6))
         plt.scatter(self.features[:, 1].asnumpy(), self.labels.asnumpy(), 1)
+
+
+class MxDataLoader(Dataloader):
+    def __init__(self, true_w, true_b, num_inputs:int, num_examples:int, batch_size:int):
+        super(MxDataLoader, self).\
+            __init__(true_w, true_b, num_inputs, num_examples, batch_size)
+
+        self.dataset = gdata.ArrayDataset(self.features, self.labels)
+
+        self.data_iter = gdata.DataLoader(self.dataset, batch_size, shuffle=True)
+
