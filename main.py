@@ -23,7 +23,7 @@ def main():
 
     print(f'run {run_mode} code ...')
 
-    if run_mode is 'raw':
+    if run_mode == 'raw':
         data_loader = Dataloader(TRUE_W, TRUE_B, num_inputs, num_examples, batch_size)
         features, labels = data_loader.get_data()
 
